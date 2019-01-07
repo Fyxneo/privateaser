@@ -155,14 +155,15 @@ function PriceCalculation()
 		{
 			if(bars[j].id == events[i].barId)
 			{
-				var prix = bars[j].pricePerHour*events[i].time + bars[j].pricePerPerson*events[i].persons;
-				var b = prix;
-				events[i].price = prix; 
+				var price = bars[j].pricePerHour*events[i].time + bars[j].pricePerPerson*events[i].persons;
+				events[i].price = price; 
 			}
 		}
 		
 	}
 }
+
+
 
 PriceCalculation();
 console.log(bars);
