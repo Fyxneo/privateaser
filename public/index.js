@@ -60,7 +60,7 @@ const events = [{
   'id': '94dab739-bd93-44c0-9be1-52dd07baa9f6',
   'booker': 'otacos',
   'barId': '6e06c9c0-4ab0-4d66-8325-c5fa60187cf8',
-  'distance': 5,
+  'time': 5,
   'persons': 80,
   'options': {
     'deductibleReduction': true
@@ -146,6 +146,25 @@ const actors = [{
   }]
 }];
 
+
+function PriceCalculation()
+{
+	for (var i = 0; i < events.length; i++)
+	{
+		for(var j = 0; j < bars.length; j++)
+		{
+			if(bars[j].id == events[i].barId)
+			{
+				var prix = bars[j].pricePerHour*events[i].time + bars[j].pricePerPerson*events[i].persons;
+				var b = prix;
+				events[i].price = prix; 
+			}
+		}
+		
+	}
+}
+
+PriceCalculation();
 console.log(bars);
 console.log(events);
 console.log(actors);
