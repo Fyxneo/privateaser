@@ -205,9 +205,33 @@ function Commission()
 	}
 }
 
+function PayActors()
+{
+	for(var i = 0; i < actors.length; i++)
+	{
+		for(var j = 0; j < events.length; j++)
+		{
+			if(actors[i].eventId == events[j].id)
+			{
+				var options = 0;
+				if(events[j].options["deductibleReduction"])
+				{
+					options = events[j].persons;
+				}
+				actors[i].payment[0].amount = events[j].price + options;
+				actors[i].payment[1].amount = Math.round(events[j].price*0.7);
+				actors[i].payment[2].amount = events[j].commission["insurance"];
+				actors[i].payment[3].amount = events[j].commission["treasury"];
+				actors[i].payment[4].amount = events[j].commission["privateaser"];
+			}
+		}
+	}
+}
+
 
 PriceCalculation();
 Commission();
+PayActors();
 console.log(bars);
 console.log(events);
 console.log(actors);
