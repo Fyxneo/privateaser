@@ -155,6 +155,22 @@ function PriceCalculation()
 		{
 			if(bars[j].id == events[i].barId)
 			{
+				if(events[i].persons > 60)
+				{
+					var pricePerson = bars[j].pricePerPerson*0.5;
+					bars[j].pricePerPerson = pricePerson;
+				}
+				else if(events[i].persons > 20 && events[i].persons < 60)
+				{
+					var pricePerson = bars[j].pricePerPerson*0.7;
+					bars[j].pricePerPerson = pricePerson;
+				}
+				else if(events[i].persons > 10 && events[i].persons < 20)
+				{
+					var pricePerson = bars[j].pricePerPerson*0.9;
+					bars[j].pricePerPerson = pricePerson;
+				}
+				
 				var price = bars[j].pricePerHour*events[i].time + bars[j].pricePerPerson*events[i].persons;
 				events[i].price = price; 
 			}
@@ -162,6 +178,7 @@ function PriceCalculation()
 		
 	}
 }
+
 
 
 
