@@ -179,10 +179,27 @@ function PriceCalculation()
 	}
 }
 
-
+function Commission()
+{
+	for(var i = 0; i < events.length; i++)
+	{
+		var com = events[i].price*0.3;
+		
+		var ins = com*0.5;
+		events[i].commission["insurance"] = ins;
+		
+		var treas = events[i].persons;
+		events[i].commission["treasury"] = treas;
+		
+		var priv = com -(ins + treas);
+		events[i].commission["privateaser"] = priv;
+		
+	}
+}
 
 
 PriceCalculation();
+Commission();
 console.log(bars);
 console.log(events);
 console.log(actors);
