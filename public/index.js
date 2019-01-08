@@ -189,16 +189,15 @@ function Commission()
 		events[i].commission["insurance"] = ins;
 		
 		var treas = events[i].persons;
+		events[i].commission["treasury"] = treas;
 		
 		if(events[i].options["deductibleReduction"])
 		{
-			var priv = com + treas - ins;
+			var priv = com - ins;
 			events[i].commission["privateaser"] = priv;
 		}
 		else
 		{
-			events[i].commission["treasury"] = treas;
-			
 			var priv = com -(ins + treas);
 			events[i].commission["privateaser"] = priv;
 		}	
